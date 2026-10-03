@@ -1,0 +1,43 @@
+{
+  "groups": [
+    {
+      "id": "stk",
+      "nom": "STK",
+      "slogan": "Grandir dans la foi et la fraternité",
+      "description": "Association des jeunes chrétiens : partage, prière, étude biblique et activités pour les jeunes.",
+      "public_cible": "Jeunes",
+      "horaires": "À préciser",
+      "lieu": "Luxembourg (lieu à confirmer)",
+      "contact": "Contact via l’association",
+      "image": "",
+      "couleur": "#c8963e",
+      "activites": ["Partage", "Prière", "Étude biblique", "Activités pour les jeunes"]
+    },
+    {
+      "id": "sekoly-alahady",
+      "nom": "Sekoly Alahady",
+      "slogan": "Transmettre la foi aux enfants",
+      "description": "L'école du dimanche : enseignement biblique et activités pour les enfants.",
+      "public_cible": "Enfants",
+      "horaires": "À préciser",
+      "lieu": "Luxembourg (lieu à confirmer)",
+      "contact": "Contact via l’association",
+      "image": "",
+      "couleur": "#1d3c6e",
+      "activites": ["Enseignement biblique", "Activités pour les enfants"]
+    },
+    {
+      "id": "fimpiz",
+      "nom": "FIMPIZ",
+      "slogan": "Servir et s’entraider dans la communauté",
+      "description": "Groupe de la communauté : rencontres, services et entraide au sein de l'association.",
+      "public_cible": "Communauté",
+      "horaires": "À préciser",
+      "lieu": "Luxembourg (lieu à confirmer)",
+      "contact": "Contact via l’association",
+      "image": "",
+      "couleur": "#6c8a66",
+      "activites": ["Rencontres", "Services", "Entraide"]
+    }
+  ]
+}

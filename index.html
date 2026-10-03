@@ -4,33 +4,83 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Accueil – FJKM Luxembourg</title>
-<meta name="description" content="FJKM Luxembourg : STK, Sekoly Alahady et FIMPIZ.">
-<link rel="icon" type="image/jpeg" href="assets/logo/logo.jpeg">
-<link rel="stylesheet" href="css/style.css">
+<meta name="description" content="FJKM Luxembourg Fanasina, communauté chrétienne malgache au Luxembourg.">
+<link rel="icon" type="image/jpeg" href="assets/img/logo/logo.jpeg">
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
+<body data-base="">
 <a class="skip" href="#main">Aller au contenu</a>
-<header><div class="container bar">
-<a class="brand" href="index.html"><img src="assets/logo/logo.jpeg" alt="Logo FJKM Luxembourg Fanasina" width="56" height="56">FJKM Luxembourg Fanasina</a>
-<button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
-<nav aria-label="Navigation principale"><ul id="menu">
-<li><a href="index.html" aria-current="page">Accueil</a></li>
-<li><a href="pages/about.html">À propos</a></li>
-<li><a href="pages/groups.html">Groupes</a></li>
-<li><a href="pages/events.html">Événements</a></li>
-<li><a href="pages/gallery.html">Galerie</a></li>
-<li><a href="pages/contact.html">Contact</a></li>
-</ul></nav></div></header>
+<header>
+  <div class="container bar">
+    <a class="brand" href="index.html"><img src="assets/img/logo/logo.jpeg" alt="" width="56" height="56">FJKM Luxembourg Fanasina</a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
+    <nav aria-label="Navigation principale"><ul id="menu">
+      <li><a href="index.html" aria-current="page">Accueil</a></li>
+      <li><a href="pages/about.html">À propos</a></li>
+      <li><a href="pages/groups.html">Groupes</a></li>
+      <li><a href="pages/events.html">Événements</a></li>
+      <li><a href="pages/gallery.html">Galerie</a></li>
+      <li><a href="pages/contact.html">Contact</a></li>
+    </ul></nav>
+  </div>
+</header>
 <main id="main">
-<div class="hero"><div class="container"><img class="hero-logo" src="assets/logo/logo.jpeg" alt="" width="160" height="160"><h1>FJKM Luxembourg</h1><p>Bienvenue dans notre communauté chrétienne malgache au Luxembourg.</p><a class="btn" href="pages/events.html">Voir les événements</a></div></div>
-<section><div class="container"><h2>Nos groupes</h2><div class="grid">
-<article class="card"><h3>STK</h3><p>Association des jeunes chrétiens : partage, prière, étude biblique et activités pour les jeunes.</p></article>
-<article class="card"><h3>Sekoly Alahady</h3><p>L'école du dimanche : enseignement biblique et activités pour les enfants.</p></article>
-<article class="card"><h3>FIMPIZ</h3><p>Groupe de la communauté : rencontres, services et entraide au sein de l'association.</p></article>
-</div></div></section>
-<section><div class="container"><h2>Prochains événements</h2><div id="events-list" class="grid" data-limit="3" data-base=""></div></div></section>
+  <section class="hero">
+    <div class="container hero-content">
+      <p class="eyebrow">FJKM Luxembourg Fanasina</p>
+      <h1>Bienvenue dans notre communauté</h1>
+      <p class="hero-intro" data-site-field="tagline">Une communauté chrétienne malgache au Luxembourg.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#infos">Nos cultes et horaires</a>
+        <a class="btn btn-outline" href="pages/contact.html">Nous contacter</a>
+      </div>
+    </div>
+  </section>
+  <section class="info-band" id="infos" aria-label="Informations pratiques">
+    <div class="container info-grid">
+      <article><span class="info-icon" aria-hidden="true">◷</span><div><h2>Cultes</h2><p data-site-field="cultes">Horaires à confirmer</p></div></article>
+      <article><span class="info-icon" aria-hidden="true">⌖</span><div><h2>Nous trouver</h2><p data-site-field="address">Luxembourg (lieu à confirmer)</p></div></article>
+      <article><span class="info-icon" aria-hidden="true">@</span><div><h2>Nous écrire</h2><p><a data-site-field="email" href="mailto:contact@example.com">contact@example.com</a></p></div></article>
+    </div>
+    <p class="container site-error" data-site-error role="status"></p>
+  </section>
+  <section class="section">
+    <div class="container welcome">
+      <div class="welcome-mark" aria-hidden="true">FJKM</div>
+      <div><p class="eyebrow">Bienvenue chez nous</p><h2>Une foi vécue ensemble</h2>
+        <p data-site-field="welcome">Nous nous rassemblons pour vivre notre foi, transmettre les valeurs chrétiennes et nous soutenir les uns les autres.</p>
+        <a class="text-link" href="pages/about.html">En savoir plus sur notre communauté <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+  <section class="section section-soft">
+    <div class="container">
+      <div class="section-heading"><div><p class="eyebrow">Grandir ensemble</p><h2>Nos groupes</h2></div><a class="text-link" href="pages/groups.html">Découvrir tous les groupes <span aria-hidden="true">→</span></a></div>
+      <div class="grid group-grid" data-groups data-view="summary" data-base="" aria-live="polite"></div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="section-heading"><div><p class="eyebrow">À noter</p><h2>Prochains événements</h2></div><a class="text-link" href="pages/events.html">Tous les événements <span aria-hidden="true">→</span></a></div>
+      <div id="events-list" class="grid" data-events data-limit="3" data-base="" aria-live="polite"></div>
+    </div>
+  </section>
+  <section class="section section-soft">
+    <div class="container">
+      <div class="section-heading"><div><p class="eyebrow">Nos moments partagés</p><h2>La vie de la communauté</h2></div><a class="text-link" href="pages/gallery.html">Voir la galerie <span aria-hidden="true">→</span></a></div>
+      <div class="grid gallery preview-gallery">
+        <img src="assets/img/gallery/photo1.svg" alt="Un aperçu de la vie de la communauté" loading="lazy">
+        <img src="assets/img/gallery/photo2.svg" alt="Un moment partagé par la communauté" loading="lazy">
+        <img src="assets/img/gallery/photo3.svg" alt="Les activités de la communauté" loading="lazy">
+      </div>
+    </div>
+  </section>
+  <section class="contact-cta">
+    <div class="container"><p class="eyebrow">Nous serions heureux de vous rencontrer</p><h2>Venez partager un moment avec nous</h2><a class="btn" href="pages/contact.html">Nous contacter</a></div>
+  </section>
 </main>
-<footer><div class="container">&copy; FJKM Luxembourg · <a href="pages/contact.html">Contact</a></div></footer>
-<script src="js/script.js"></script>
+<footer><div class="container footer-content"><a class="footer-brand" href="index.html">FJKM Luxembourg Fanasina</a><p>Une communauté chrétienne malgache au Luxembourg.</p><nav aria-label="Navigation de pied de page"><a href="pages/about.html">À propos</a><a href="pages/groups.html">Groupes</a><a href="pages/events.html">Événements</a><a href="pages/gallery.html">Galerie</a><a href="pages/contact.html">Contact</a></nav><small>&copy; FJKM Luxembourg</small></div></footer>
+<script src="assets/js/render.js"></script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>
