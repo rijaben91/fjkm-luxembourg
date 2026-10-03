@@ -1,0 +1,39 @@
+{
+  "events": [
+    {
+      "id": 1,
+      "title": "Culte dominical",
+      "date": "2026-11-01",
+      "time": "10:00",
+      "location": "Luxembourg (lieu à confirmer)",
+      "group": "Tous",
+      "description": "Culte mensuel de l'association."
+    },
+    {
+      "id": 2,
+      "title": "Sekoly Alahady",
+      "date": "2026-11-08",
+      "time": "10:30",
+      "location": "Luxembourg (lieu à confirmer)",
+      "group": "Sekoly Alahady",
+      "description": "École du dimanche pour les enfants."
+    },
+    {
+      "id": 3,
+      "title": "Rencontre STK",
+      "date": "2026-11-15",
+      "time": "15:00",
+      "location": "Luxembourg (lieu à confirmer)",
+      "group": "STK",
+      "description": "Rencontre de l'association des jeunes chrétiens."
+    }
+  ],
+  "history": [
+    {
+      "date": "2026-10-02",
+      "action": "création",
+      "eventId": 1,
+      "note": "Ajout initial des événements"
+    }
+  ]
+}
