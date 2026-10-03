@@ -8,7 +8,8 @@ img{max-width:100%;height:auto;display:block}
 header{background:#fff;border-bottom:1px solid #e3e8ef;position:sticky;top:0;z-index:5}
 .bar{display:flex;align-items:center;justify-content:space-between;padding:.6rem 0}
 .brand{display:flex;align-items:center;gap:.6rem;font-weight:700;text-decoration:none;color:var(--c)}
-.brand img{width:40px;height:40px}
+.brand img{width:56px;height:56px;object-fit:contain}
+.hero-logo{width:160px;height:160px;margin:0 auto 1rem;background:#fff;border-radius:50%;object-fit:contain}
 .menu-btn{background:none;border:1px solid var(--c);color:var(--c);padding:.4rem .7rem;border-radius:6px;font-size:1rem;cursor:pointer}
 nav ul{list-style:none;margin:0;padding:0;display:none;flex-direction:column}
 nav ul.open{display:flex}
