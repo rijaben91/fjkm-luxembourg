@@ -85,7 +85,7 @@
     });
   }
 
-  function renderSiteInfo(data, base) {
+  function renderSiteInfo(data) {
     if (data.title) document.title = document.title.replace(/FJKM Luxembourg(?: Fanasina)?/, data.title);
     document.querySelectorAll('[data-site-field]').forEach(function (node) {
       var value = data[node.getAttribute('data-site-field')];
@@ -96,9 +96,6 @@
       } else {
         node.textContent = value;
       }
-    });
-    document.querySelectorAll('[data-site-image]').forEach(function (node) {
-      node.src = base + data[node.getAttribute('data-site-image')];
     });
   }
 
@@ -123,7 +120,7 @@
       });
       var base = document.body.getAttribute('data-base') || '';
       loadJson(base + 'data/site.json').then(function (data) {
-        renderSiteInfo(data, base);
+        renderSiteInfo(data);
       }).catch(function () {
         document.querySelectorAll('[data-site-error]').forEach(function (node) {
           node.textContent = 'Les informations pratiques ne sont pas disponibles pour le moment.';
