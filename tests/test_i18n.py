@@ -21,6 +21,14 @@ def message_keys(lang):
     return list(catalog()[lang]["messages"])
 
 
+class PrerenderTest(unittest.TestCase):
+    def test_pages_are_in_sync_with_json(self):
+        import subprocess
+        import sys
+        result = subprocess.run([sys.executable, os.path.join(ROOT, "tools", "sync_i18n.py"), "--check"], capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stdout + "\nLancer : python3 tools/sync_i18n.py")
+
+
 class I18nTest(unittest.TestCase):
     def test_same_keys_in_both_languages(self):
         fr, mg = message_keys("fr"), message_keys("mg")
