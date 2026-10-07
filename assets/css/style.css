@@ -134,8 +134,9 @@ input, textarea { width: 100%; padding: .65rem; border: 1px solid #b8c1cc; borde
 
 .welcome-mark img { width: auto; max-height: 190px; margin-inline: auto; }
 
-.lang-switch { display: flex; gap: .25rem; margin-left: auto; }
-.lang-switch button { min-width: 2.4rem; min-height: 2.4rem; border: 1px solid var(--line); border-radius: 6px; padding: .3rem .5rem; color: var(--navy); background: #fff; font: inherit; font-size: .85rem; font-weight: 700; cursor: pointer; }
-.lang-switch button[aria-pressed="true"] { color: #fff; background: var(--navy); border-color: var(--navy); }
-.lang-switch button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
-@media (min-width: 900px) { .lang-switch { margin-left: 0; } }
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.lang-switch { margin-left: auto; }
+.lang-select { appearance: none; -webkit-appearance: none; padding: .45rem 1.4rem .45rem .25rem; border: 0; border-radius: 0; color: var(--ink); background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%2319365d' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right .3rem center; font: inherit; font-size: .94rem; cursor: pointer; }
+.lang-select:hover { color: var(--gold); }
+.lang-select:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+@media (min-width: 900px) { .lang-switch { margin-left: 1.5rem; } }
