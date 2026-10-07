@@ -8,5 +8,12 @@
     });
   }
 
-  if (window.FJKMRender) window.FJKMRender.init();
+  var base = document.body.getAttribute('data-base') || '';
+  var ready = window.FJKMI18n ? window.FJKMI18n.init(base) : Promise.resolve();
+  if (window.FJKMRender) {
+    ready.then(function () {
+      window.FJKMRender.init();
+      document.addEventListener('fjkm:langchange', window.FJKMRender.init);
+    });
+  }
 })();

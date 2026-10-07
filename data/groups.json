@@ -11,7 +11,28 @@
       "contact": "Contact via l’association",
       "image": "",
       "couleur": "#c8963e",
-      "activites": ["Partage", "Prière", "Étude biblique", "Activités pour les jeunes"]
+      "activites": [
+        "Partage",
+        "Prière",
+        "Étude biblique",
+        "Activités pour les jeunes"
+      ],
+      "i18n": {
+        "mg": {
+          "slogan": "Mitombo amin’ny finoana sy ny firahalahiana",
+          "description": "Fikambanan’ny tanora kristiana: fiaraha-mizara, vavaka, fandalinana Baiboly ary hetsika ho an’ny tanora.",
+          "public_cible": "Tanora",
+          "activites": [
+            "Fiaraha-mizara",
+            "Vavaka",
+            "Fandalinana Baiboly",
+            "Hetsika ho an’ny tanora"
+          ],
+          "horaires": "Ho hamafisina",
+          "lieu": "Luxembourg (toerana hamafisina)",
+          "contact": "Mifandraisa amin’ny fikambanana"
+        }
+      }
     },
     {
       "id": "sekoly-alahady",
@@ -24,7 +45,24 @@
       "contact": "Contact via l’association",
       "image": "",
       "couleur": "#1d3c6e",
-      "activites": ["Enseignement biblique", "Activités pour les enfants"]
+      "activites": [
+        "Enseignement biblique",
+        "Activités pour les enfants"
+      ],
+      "i18n": {
+        "mg": {
+          "slogan": "Mampita ny finoana amin’ny ankizy",
+          "description": "Ny Sekoly Alahady: fampianarana Baiboly sy hetsika ho an’ny ankizy.",
+          "public_cible": "Ankizy",
+          "activites": [
+            "Fampianarana Baiboly",
+            "Hetsika ho an’ny ankizy"
+          ],
+          "horaires": "Ho hamafisina",
+          "lieu": "Luxembourg (toerana hamafisina)",
+          "contact": "Mifandraisa amin’ny fikambanana"
+        }
+      }
     },
     {
       "id": "fimpiz",
@@ -37,7 +75,26 @@
       "contact": "Contact via l’association",
       "image": "",
       "couleur": "#6c8a66",
-      "activites": ["Rencontres", "Services", "Entraide"]
+      "activites": [
+        "Rencontres",
+        "Services",
+        "Entraide"
+      ],
+      "i18n": {
+        "mg": {
+          "slogan": "Manompo sy mifanampy ao amin’ny fiangonana",
+          "description": "Vondrona ao amin’ny fiangonana: fihaonambe, fanompoana ary fifanampiana ao anatin’ny fikambanana.",
+          "public_cible": "Fiangonana",
+          "activites": [
+            "Fihaonambe",
+            "Fanompoana",
+            "Fifanampiana"
+          ],
+          "horaires": "Ho hamafisina",
+          "lieu": "Luxembourg (toerana hamafisina)",
+          "contact": "Mifandraisa amin’ny fikambanana"
+        }
+      }
     }
   ]
 }

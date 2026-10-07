@@ -7,7 +7,15 @@
       "time": "10:00",
       "location": "Luxembourg (lieu à confirmer)",
       "group": "Tous",
-      "description": "Culte mensuel de l'association."
+      "description": "Culte mensuel de l'association.",
+      "i18n": {
+        "mg": {
+          "title": "Fotoam-pivavahana andron’ny Alahady",
+          "location": "Luxembourg (toerana hamafisina)",
+          "group": "Rehetra",
+          "description": "Fotoam-pivavahana isam-bolana an’ny fikambanana."
+        }
+      }
     },
     {
       "id": 2,
@@ -16,7 +24,15 @@
       "time": "10:30",
       "location": "Luxembourg (lieu à confirmer)",
       "group": "Sekoly Alahady",
-      "description": "École du dimanche pour les enfants."
+      "description": "École du dimanche pour les enfants.",
+      "i18n": {
+        "mg": {
+          "title": "Sekoly Alahady",
+          "location": "Luxembourg (toerana hamafisina)",
+          "group": "Sekoly Alahady",
+          "description": "Sekoly Alahady ho an’ny ankizy."
+        }
+      }
     },
     {
       "id": 3,
@@ -25,7 +41,15 @@
       "time": "15:00",
       "location": "Luxembourg (lieu à confirmer)",
       "group": "STK",
-      "description": "Rencontre de l'association des jeunes chrétiens."
+      "description": "Rencontre de l'association des jeunes chrétiens.",
+      "i18n": {
+        "mg": {
+          "title": "Fihaonan’ny STK",
+          "location": "Luxembourg (toerana hamafisina)",
+          "group": "STK",
+          "description": "Fihaonan’ny fikambanan’ny tanora kristiana."
+        }
+      }
     }
   ],
   "history": [
