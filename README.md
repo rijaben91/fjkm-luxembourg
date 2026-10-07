@@ -1,6 +1,6 @@
 # FJKM Luxembourg Fanasina
 
-Site statique en français pour la communauté FJKM Luxembourg. Il fonctionne sans build ni framework et peut être publié directement depuis la branche principale avec GitHub Pages.
+Site statique bilingue (français par défaut, malgache) pour la communauté FJKM Luxembourg. Il fonctionne sans build ni framework et peut être publié directement depuis la branche principale avec GitHub Pages.
 
 ## Structure
 
@@ -9,6 +9,7 @@ index.html
 pages/                  Pages À propos, Groupes, Événements, Galerie et Contact
 assets/
   css/style.css
+  js/i18n.js             Logique de langue (choix persisté) (localStorage `fjkm-lang`)
   js/main.js             Menu mobile et initialisation des rendus
   js/render.js           Chargement et rendu sécurisé des données JSON
   img/logo/logo.jpeg
@@ -17,9 +18,14 @@ data/
   site.json              Accroche et informations pratiques
   groups.json            Contenu des groupes
   events.json            Événements à venir
+  i18n.json              Textes d'interface FR/MG (menu, footer, libellés, dates)
 ```
 
 Les liens et chemins sont relatifs à chaque page : ils fonctionnent sur GitHub Pages, y compris lorsque le site est publié dans le sous-chemin `/fjkm-luxembourg/`.
+
+## Langues
+
+Le français est la langue par défaut ; le sélecteur FR/MG du header mémorise le choix dans `localStorage` (clé `fjkm-lang`) pour toutes les pages. Tous les textes d'interface (menu du header, pied de page, titres, libellés, noms des jours et des mois) sont dans `data/i18n.json`, sous `fr` et `mg` ; `assets/js/i18n.js` ne contient que la logique (attributs `data-i18n` / `data-i18n-attr` dans le HTML). Dans les fichiers `data/*.json`, les champs en français restent la base et les traductions malgaches sont dans `i18n.mg` de chaque objet. Validation : `python3 -m unittest discover tests`.
 
 ## Modifier le contenu
 

@@ -3,28 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Groupes – FJKM Luxembourg</title>
-<meta name="description" content="FJKM Luxembourg : STK, Sekoly Alahady et FIMPIZ.">
+<title data-i18n="meta.groups.title">Groupes – FJKM Luxembourg</title>
+<meta name="description" data-i18n-attr="content:meta.groups.description" content="FJKM Luxembourg : STK, Sekoly Alahady et FIMPIZ.">
 <link rel="icon" type="image/jpeg" href="../assets/img/logo/logo.jpeg">
 <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body data-base="../">
-<a class="skip" href="#main">Aller au contenu</a>
+<a class="skip" data-i18n="nav.skip" href="#main">Aller au contenu</a>
 <header><div class="container bar">
-<a class="brand" href="../index.html"><img class="logo-mere" src="../assets/img/logo/fjkm-mere.jpeg" alt="Logo FJKM, église mère" width="23" height="60"><img class="logo-lux" src="../assets/img/logo/logo.jpeg" alt="" width="56" height="56"><span class="brand-text">FJKM Luxembourg<small>Fanasina</small></span></a>
-<button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
-<nav aria-label="Navigation principale"><ul id="menu">
-<li><a href="../index.html">Accueil</a></li>
-<li><a href="../pages/about.html">À propos</a></li>
-<li><a href="../pages/groups.html" aria-current="page">Groupes</a></li>
-<li><a href="../pages/events.html">Événements</a></li>
-<li><a href="../pages/gallery.html">Galerie</a></li>
-<li><a href="../pages/contact.html">Contact</a></li>
-</ul></nav></div></header>
+<a class="brand" href="../index.html"><img class="logo-mere" src="../assets/img/logo/fjkm-mere.jpeg" alt="Logo FJKM, église mère" data-i18n-attr="alt:brand.logoAlt" width="23" height="60"><img class="logo-lux" src="../assets/img/logo/logo.jpeg" alt="" width="56" height="56"><span class="brand-text"><span data-i18n="brand.name">FJKM Luxembourg</span><small data-i18n="brand.sub">Fanasina</small></span></a>
+<button class="menu-btn" aria-expanded="false" aria-controls="menu" data-i18n="nav.menu">Menu</button>
+<nav aria-label="Navigation principale" data-i18n-attr="aria-label:nav.main"><ul id="menu">
+<li><a data-i18n="nav.home" href="../index.html">Accueil</a></li>
+<li><a data-i18n="nav.about" href="../pages/about.html">À propos</a></li>
+<li><a data-i18n="nav.groups" href="../pages/groups.html" aria-current="page">Groupes</a></li>
+<li><a data-i18n="nav.events" href="../pages/events.html">Événements</a></li>
+<li><a data-i18n="nav.gallery" href="../pages/gallery.html">Galerie</a></li>
+<li><a data-i18n="nav.contact" href="../pages/contact.html">Contact</a></li>
+</ul></nav><div class="lang-switch" role="group" aria-label="Langue" data-i18n-attr="aria-label:lang.label"><button type="button" data-lang="fr" lang="fr" aria-pressed="true" title="Français">FR</button><button type="button" data-lang="mg" lang="mg" aria-pressed="false" title="Malagasy">MG</button></div></div></header>
 <main id="main">
-<section><div class="container"><p class="eyebrow">Grandir ensemble</p><h2>Nos groupes et activités</h2><div class="grid group-grid" data-groups data-view="details" data-base="../" aria-live="polite"></div></div></section>
+<section><div class="container"><p class="eyebrow" data-i18n="home.groupsEyebrow">Grandir ensemble</p><h2 data-i18n="groups.title">Nos groupes et activités</h2><div class="grid group-grid" data-groups data-view="details" data-base="../" aria-live="polite"></div></div></section>
 </main>
-<footer><div class="container">&copy; FJKM Luxembourg · <a href="../pages/contact.html">Contact</a></div></footer>
+<footer><div class="container"><span data-i18n="footer.copyright">&copy; FJKM Luxembourg</span> · <a data-i18n="nav.contact" href="../pages/contact.html">Contact</a></div></footer>
+<script src="../assets/js/i18n.js"></script>
 <script src="../assets/js/render.js"></script>
 <script src="../assets/js/main.js"></script>
 </body>

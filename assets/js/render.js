@@ -6,6 +6,15 @@
     return node;
   }
 
+  function t(key) {
+    var text = window.FJKMI18n && window.FJKMI18n.t(key);
+    return text === undefined || text === false ? key : text;
+  }
+
+  function tr(item, field) {
+    return window.FJKMI18n ? window.FJKMI18n.localized(item, field) : item[field];
+  }
+
   function loadJson(path) {
     return fetch(path).then(function (response) {
       if (!response.ok) throw new Error('Chargement impossible');
@@ -23,20 +32,20 @@
       if (group.image) {
         var image = element('img', 'group-image');
         image.src = base + group.image;
-        image.alt = group.nom;
+        image.alt = tr(group, 'nom');
         image.loading = 'lazy';
         card.appendChild(image);
       }
       var content = element('div', 'group-card-content');
-      content.appendChild(element('h3', '', group.nom));
-      if (group.slogan) content.appendChild(element('p', 'group-slogan', group.slogan));
-      content.appendChild(element('p', '', group.description));
+      content.appendChild(element('h3', '', tr(group, 'nom')));
+      if (tr(group, 'slogan')) content.appendChild(element('p', 'group-slogan', tr(group, 'slogan')));
+      content.appendChild(element('p', '', tr(group, 'description')));
       if (box.getAttribute('data-view') === 'details') {
         [
-          ['Public cible', group.public_cible],
-          ['Horaires', group.horaires],
-          ['Lieu', group.lieu],
-          ['Contact', group.contact]
+          [t('groups.targetAudience'), tr(group, 'public_cible')],
+          [t('groups.schedule'), tr(group, 'horaires')],
+          [t('groups.place'), tr(group, 'lieu')],
+          [t('groups.contact'), tr(group, 'contact')]
         ].forEach(function (item) {
           if (!item[1]) return;
           var detail = element('p', 'group-detail');
@@ -44,10 +53,11 @@
           detail.appendChild(document.createTextNode(item[1]));
           content.appendChild(detail);
         });
-        if (Array.isArray(group.activites) && group.activites.length) {
-          content.appendChild(element('h4', '', 'Activités'));
+        var activityList = tr(group, 'activites');
+        if (Array.isArray(activityList) && activityList.length) {
+          content.appendChild(element('h4', '', t('groups.activities')));
           var activities = element('ul', 'activity-list');
-          group.activites.forEach(function (activity) {
+          activityList.forEach(function (activity) {
             activities.appendChild(element('li', '', activity));
           });
           content.appendChild(activities);
@@ -59,7 +69,7 @@
   }
 
   function renderEvents(box, data) {
-    if (!data || !Array.isArray(data.events)) throw new Error('Événements indisponibles');
+    if (!data || !Array.isArray(data.events)) throw new Error(t('events.unavailable'));
     var today = new Date().toISOString().slice(0, 10);
     var events = data.events.slice().sort(function (a, b) {
       return a.date < b.date ? -1 : 1;
@@ -69,26 +79,30 @@
     var limit = parseInt(box.getAttribute('data-limit'), 10) || 0;
     if (limit) events = events.slice(0, limit);
     if (!events.length) {
-      box.appendChild(element('p', '', 'Aucun événement à venir.'));
+      box.appendChild(element('p', '', t('events.none')));
       return;
     }
     events.forEach(function (event) {
       var card = element('article', 'card');
-      var date = new Date(event.date + 'T00:00:00').toLocaleDateString('fr-FR', {
-        weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
-      });
+      var date = window.FJKMI18n
+        ? window.FJKMI18n.formatDate(new Date(event.date + 'T00:00:00'))
+        : event.date;
       card.appendChild(element('p', 'date', date + (event.time ? ' – ' + event.time : '')));
-      card.appendChild(element('h3', '', event.title));
-      card.appendChild(element('p', '', event.group + ' · ' + event.location));
-      card.appendChild(element('p', '', event.description));
+      card.appendChild(element('h3', '', tr(event, 'title')));
+      card.appendChild(element('p', '', tr(event, 'group') + ' · ' + tr(event, 'location')));
+      card.appendChild(element('p', '', tr(event, 'description')));
       box.appendChild(card);
     });
   }
 
   function renderSiteInfo(data) {
-    if (data.title) document.title = document.title.replace(/FJKM Luxembourg(?: Fanasina)?/, data.title);
+    document.querySelectorAll('[data-site-error]').forEach(function (node) {
+      node.textContent = '';
+    });
+    var title = tr(data, 'title');
+    if (title) document.title = document.title.replace(/FJKM Luxembourg(?: Fanasina)?/, title);
     document.querySelectorAll('[data-site-field]').forEach(function (node) {
-      var value = data[node.getAttribute('data-site-field')];
+      var value = tr(data, node.getAttribute('data-site-field'));
       if (value === undefined) return;
       if (node.tagName === 'A') {
         node.href = 'mailto:' + value;
@@ -102,10 +116,11 @@
   function renderCollection(selector, path, renderer) {
     document.querySelectorAll(selector).forEach(function (box) {
       var base = box.getAttribute('data-base') || '';
+      box.textContent = '';
       loadJson(base + path).then(function (data) {
         renderer(box, data, base);
       }).catch(function () {
-        box.appendChild(element('p', 'load-error', 'Impossible de charger ce contenu pour le moment.'));
+        box.appendChild(element('p', 'load-error', t('error.load')));
       });
     });
   }
@@ -123,7 +138,7 @@
         renderSiteInfo(data);
       }).catch(function () {
         document.querySelectorAll('[data-site-error]').forEach(function (node) {
-          node.textContent = 'Les informations pratiques ne sont pas disponibles pour le moment.';
+          node.textContent = t('error.site');
         });
       });
     }
