@@ -10,16 +10,21 @@
     return LANGS.indexOf(lang) !== -1;
   }
 
-  function readStored() {
-    try {
-      return window.localStorage.getItem(STORAGE_KEY);
-    } catch (e) {
-      return null;
-    }
+  // La langue vient de l'URL (/fr/... ou /mg/...), reflétée par <html lang>.
+  function detectLang() {
+    var match = window.location.pathname.match(/\/(fr|mg)(?:\/|$)/);
+    if (match) return match[1];
+    var declared = document.documentElement.lang;
+    return isSupported(declared) ? declared : DEFAULT_LANG;
   }
 
-  var current = readStored();
-  if (!isSupported(current)) current = DEFAULT_LANG;
+  var current = detectLang();
+
+  function remember(lang) {
+    try {
+      window.localStorage.setItem(STORAGE_KEY, lang);
+    } catch (e) {}
+  }
 
   function t(key, vars) {
     var text = (messages[current] && messages[current][key]) || (messages[DEFAULT_LANG] && messages[DEFAULT_LANG][key]);
@@ -59,19 +64,8 @@
         if (text !== undefined) node.setAttribute(parts[0], text);
       });
     });
-    root.querySelectorAll('[data-lang]').forEach(function (button) {
-      button.setAttribute('aria-pressed', button.getAttribute('data-lang') === current ? 'true' : 'false');
-    });
-  }
-
-  function setLang(lang) {
-    if (!isSupported(lang) || lang === current) return;
-    current = lang;
-    try {
-      window.localStorage.setItem(STORAGE_KEY, lang);
-    } catch (e) {}
-    apply();
-    document.dispatchEvent(new CustomEvent('fjkm:langchange', { detail: { lang: lang } }));
+    var select = root.querySelector('.lang-select');
+    if (select) select.value = select.querySelector('option[lang="' + current + '"]').value;
   }
 
   function load(base) {
@@ -87,15 +81,18 @@
   }
 
   function bindSwitch() {
-    document.querySelectorAll('.lang-switch [data-lang]').forEach(function (button) {
-      button.addEventListener('click', function () {
-        setLang(button.getAttribute('data-lang'));
-      });
+    var select = document.querySelector('.lang-select');
+    if (!select) return;
+    select.addEventListener('change', function () {
+      var option = select.options[select.selectedIndex];
+      remember(option.getAttribute('lang'));
+      window.location.href = option.value + window.location.search + window.location.hash;
     });
   }
 
   // Le HTML contient le français : en cas d'échec du chargement, il reste affiché.
   function init(base) {
+    remember(current);
     bindSwitch();
     return load(base).catch(function () {}).then(function () {
       apply();
@@ -107,7 +104,6 @@
     defaultLang: DEFAULT_LANG,
     storageKey: STORAGE_KEY,
     getLang: function () { return current; },
-    setLang: setLang,
     t: t,
     localized: localized,
     formatDate: formatDate,

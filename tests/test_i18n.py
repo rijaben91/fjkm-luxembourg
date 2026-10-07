@@ -42,21 +42,43 @@ class I18nTest(unittest.TestCase):
         self.assertIn("DEFAULT_LANG = 'fr'", read("assets", "js", "i18n.js"))
         self.assertTrue(all(catalog()[l]["messages"] for l in ("fr", "mg")))
 
-    def test_pages_use_known_keys_and_have_switcher(self):
+    def test_language_pages_exist_with_dropdown(self):
         known = set(message_keys("fr"))
-        files = ["index.html"] + sorted(glob.glob(os.path.join("pages", "*.html")))
-        self.assertEqual(len(files), 6)
-        for name in files:
+        for lang in ("fr", "mg"):
+            files = sorted(glob.glob(os.path.join(ROOT, lang, "**", "*.html"), recursive=True))
+            self.assertEqual(len(files), 6, lang)
+            for path in files:
+                name = os.path.relpath(path, ROOT)
+                html = read(name)
+                self.assertIn('<html lang="%s">' % lang, html, name)
+                keys = re.findall(r'data-i18n="([^"]+)"', html)
+                for attr in re.findall(r'data-i18n-attr="([^"]+)"', html):
+                    keys += [pair.split(":")[1] for pair in attr.split(";")]
+                for key in keys:
+                    self.assertIn(key, known, "%s : clé inconnue %s" % (name, key))
+                self.assertIn('<select id="lang-select"', html, name)
+                self.assertLess(html.index("i18n.js"), html.index("render.js"), name)
+                # chaque option de langue pointe vers un fichier existant
+                for value, option_lang in re.findall(r'<option value="([^"]+)" lang="(\w+)"', html):
+                    target = os.path.normpath(os.path.join(os.path.dirname(path), value))
+                    self.assertTrue(os.path.isfile(target), "%s -> %s" % (name, value))
+                    self.assertIn(os.sep + option_lang + os.sep, target)
+
+    def test_local_references_resolve(self):
+        for path in glob.glob(os.path.join(ROOT, "*", "**", "*.html"), recursive=True) + glob.glob(os.path.join(ROOT, "*.html")):
+            if os.path.relpath(path, ROOT).split(os.sep)[0] not in ("fr", "mg", "pages", "index.html"):
+                continue
+            html = read(os.path.relpath(path, ROOT))
+            for ref in re.findall(r'(?:src|href)="([^"#:]+)"', html):
+                if ref.startswith("//"):
+                    continue
+                self.assertTrue(os.path.exists(os.path.normpath(os.path.join(os.path.dirname(path), ref))), "%s -> %s" % (path, ref))
+
+    def test_root_pages_redirect_to_language_folders(self):
+        for name in ["index.html"] + sorted(glob.glob(os.path.join("pages", "*.html"))):
             html = read(name)
-            keys = re.findall(r'data-i18n="([^"]+)"', html)
-            for attr in re.findall(r'data-i18n-attr="([^"]+)"', html):
-                keys += [pair.split(":")[1] for pair in attr.split(";")]
-            for key in keys:
-                self.assertIn(key, known, "%s : clé inconnue %s" % (name, key))
-            self.assertIn('class="lang-switch"', html, name)
-            self.assertIn('data-lang="fr"', html, name)
-            self.assertIn('data-lang="mg"', html, name)
-            self.assertLess(html.index("i18n.js"), html.index("render.js"), name)
+            self.assertIn("http-equiv=\"refresh\"", html, name)
+            self.assertIn("fr/", html, name)
 
     def test_json_content_has_malagasy_translation(self):
         site = json.loads(read("data", "site.json"))

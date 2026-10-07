@@ -13,7 +13,6 @@
   if (window.FJKMRender) {
     ready.then(function () {
       window.FJKMRender.init();
-      document.addEventListener('fjkm:langchange', window.FJKMRender.init);
     });
   }
 })();
